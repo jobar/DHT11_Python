@@ -1,17 +1,17 @@
-# DHT11 Python library
+# DHT Python library
 
-This simple class can be used for reading temperature and humidity values from DHT11 sensor on Raspberry Pi.
+This simple class can be used for reading temperature and humidity values from DHT11/DHT22/AM2302 sensors on Raspberry Pi.
 
 # Usage
 
-1. Instantiate the `DHT11` class with the pin number as constructor parameter.
-2. Call `read()` method, which will return `DHT11Result` object with actual values and error code.
+1. Instantiate the `DHT` class with the pin number as constructor parameter.
+2. Call `read()` method, which will return `DHTResult` object with actual values and error code.
 
 For example:
 
 ```python
 import RPi.GPIO as GPIO
-import dht11
+import dht
 
 # initialize GPIO
 GPIO.setwarnings(False)
@@ -19,7 +19,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.cleanup()
 
 # read data using pin 14
-instance = dht11.DHT11(pin = 14)
+instance = dht.DHT(pin = 14)
 result = instance.read()
 
 if result.is_valid():
@@ -29,7 +29,7 @@ else:
     print("Error: %d" % result.error_code)
 ```
 
-For working example, see `dht11_example.py` (you probably need to adjust pin for your configuration)
+For working example, see `dht_example.py` (you probably need to adjust pin for your configuration)
 
 
 # License
